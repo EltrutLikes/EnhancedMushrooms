@@ -5,14 +5,14 @@ import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import com.teamaurora.enhanced_mushrooms.core.EnhancedMushrooms;
 import com.teamaurora.enhanced_mushrooms.core.other.EMBlockFamilies;
 import com.teamaurora.enhanced_mushrooms.integration.farmers_delight.EMFDCompat;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import static com.teamaurora.enhanced_mushrooms.core.registry.EMBlocks.*;
 
@@ -37,17 +37,15 @@ public class EMBlockStateProvider extends BlueprintBlockStateProvider {
     }
 
     private void cabinet(Block cabinet) {
-        ResourceLocation registryName = ForgeRegistries.BLOCKS.getKey(cabinet);
-        if (registryName != null) {
-            ResourceLocation name = this.prefix("block/", registryName);
+        ResourceLocation registryName = BuiltInRegistries.BLOCK.getKey(cabinet);
+        ResourceLocation name = prefix("block/", registryName);
 
-            ModelFile cabinetModel = models().orientable(name(cabinet), suffix(name, "_side"), suffix(name, "_front"), suffix(name, "_top"));
-            ModelFile cabinetOpenModel = models().orientable(name(cabinet) + "_open", suffix(name, "_side"), suffix(name, "_front_open"), suffix(name, "_top"));
+        ModelFile cabinetModel = models().orientable(name(cabinet), suffix(name, "_side"), suffix(name, "_front"), suffix(name, "_top"));
+        ModelFile cabinetOpenModel = models().orientable(name(cabinet) + "_open", suffix(name, "_side"), suffix(name, "_front_open"), suffix(name, "_top"));
 
-            if (BlockSubRegistryHelper.areModsLoaded("farmersdelight")) {
-                this.cabinetBlock(cabinet, cabinetModel, cabinetOpenModel);
-                this.item(cabinet);
-            }
+        if (BlockSubRegistryHelper.areModsLoaded("farmersdelight")) {
+            this.cabinetBlock(cabinet, cabinetModel, cabinetOpenModel);
+            this.item(cabinet);
         }
     }
 

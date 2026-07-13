@@ -6,22 +6,24 @@ import com.teamaurora.enhanced_mushrooms.core.EnhancedMushrooms;
 import com.teamaurora.enhanced_mushrooms.core.other.EMBlockFamilies;
 import com.teamaurora.enhanced_mushrooms.core.other.tags.EMItemTags;
 import com.teamaurora.enhanced_mushrooms.integration.boatload.EMBoatTypes;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.flag.FeatureFlags;
 
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 import static com.teamaurora.enhanced_mushrooms.core.registry.EMBlocks.*;
 
 public class EMRecipeProvider extends RecipeProvider {
-    public EMRecipeProvider(PackOutput packOutput) {
-        super(packOutput);
+    public EMRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture) {
+        super(packOutput, completableFuture);
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
-        generateRecipes(consumer, EMBlockFamilies.MUSHROOM_PLANKS_FAMILY);
+    protected void buildRecipes(RecipeOutput consumer) {
+        generateRecipes(consumer, EMBlockFamilies.MUSHROOM_PLANKS_FAMILY, FeatureFlags.REGISTRY.allFlags());
         planksFromLogs(consumer, MUSHROOM_PLANKS.get(), EMItemTags.MUSHROOM_STEMS, 4);
         woodFromLogs(consumer, MUSHROOM_HYPHAE.get(), MUSHROOM_STEM.get());
         woodFromLogs(consumer, STRIPPED_MUSHROOM_HYPHAE.get(), STRIPPED_MUSHROOM_STEM.get());

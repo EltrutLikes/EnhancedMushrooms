@@ -15,21 +15,18 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.util.MutableHashedLinkedMap;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.util.MutableHashedLinkedMap;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -46,10 +43,7 @@ public class EnhancedMushrooms
     public static final RegistryHelper REGISTRY_HELPER = new RegistryHelper(MOD_ID);
     public static final RegistryHelper VANILLA_HELPER = new RegistryHelper("minecraft");
 
-    public EnhancedMushrooms() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModLoadingContext context = ModLoadingContext.get();
-        MinecraftForge.EVENT_BUS.register(this);
+    public EnhancedMushrooms(IEventBus bus, ModContainer modContainer) {
 
         REGISTRY_HELPER.register(bus);
         VANILLA_HELPER.register(bus);
@@ -58,23 +52,14 @@ public class EnhancedMushrooms
         bus.addListener(this::clientSetup);
         bus.addListener(this::dataSetup);
         bus.addListener(EventPriority.LOWEST, this::buildCreativeModeTabContents);
-
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-            EMBlocks.setupTabEditors();
-            EMItems.setupTabEditors();
-        });
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            EMCompat.registerCompat();
-        });
+        event.enqueueWork(EMCompat::registerCompat);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            EMClientCompat.registerRenderLayers();
-        });
+        event.enqueueWork(EMClientCompat::registerRenderLayers);
     }
 
     private void dataSetup(GatherDataEvent event) {
@@ -87,8 +72,8 @@ public class EnhancedMushrooms
         EMBlockTagsProvider blockTags = new EMBlockTagsProvider(output, provider, helper);
         generator.addProvider(includeServer, blockTags);
         generator.addProvider(includeServer, new EMItemTagsProvider(output, provider, blockTags.contentsGetter(), helper));
-        generator.addProvider(includeServer, new EMRecipeProvider(output));
-        generator.addProvider(includeServer, new EMLootTableProvider(output));
+        generator.addProvider(includeServer, new EMRecipeProvider(output, provider));
+        generator.addProvider(includeServer, new EMLootTableProvider(output, provider));
 
         boolean includeClient = event.includeClient();
         generator.addProvider(includeClient, new EMBlockStateProvider(output, helper));
@@ -98,17 +83,17 @@ public class EnhancedMushrooms
     @SubscribeEvent
     public void buildCreativeModeTabContents(@NotNull BuildCreativeModeTabContentsEvent event)
     {
-        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-            MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries = event.getEntries();
-            ArrayList<ItemStack> mushroom_stems = new ArrayList<ItemStack>();
-            for (Map.Entry<ItemStack, CreativeModeTab.TabVisibility> entry : entries)
-            {
-                if (entry.getKey().is(Items.MUSHROOM_STEM)) {
-                    //mushroom_stems.add(entry.getKey());
-                    LOGGER.info(entry.getKey());
-                }
-            }
-            mushroom_stems.forEach(entries::remove);
-        }
+//        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+//            MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries = event.getEntries();
+//            ArrayList<ItemStack> mushroom_stems = new ArrayList<>();
+//            for (Map.Entry<ItemStack, CreativeModeTab.TabVisibility> entry : entries)
+//            {
+//                if (entry.getKey().is(Items.MUSHROOM_STEM)) {
+//                    //mushroom_stems.add(entry.getKey());
+//                    LOGGER.info(entry.getKey());
+//                }
+//            }
+//            mushroom_stems.forEach(entries::remove);
+//        }
     }
 }

@@ -3,7 +3,7 @@ package com.teamaurora.enhanced_mushrooms.core.data.client;
 import com.teamabnormals.blueprint.core.data.client.BlueprintItemModelProvider;
 import com.teamaurora.enhanced_mushrooms.core.EnhancedMushrooms;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import static com.teamaurora.enhanced_mushrooms.core.registry.EMItems.*;
 

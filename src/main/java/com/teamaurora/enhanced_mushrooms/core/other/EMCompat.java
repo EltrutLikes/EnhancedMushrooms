@@ -2,11 +2,14 @@ package com.teamaurora.enhanced_mushrooms.core.other;
 
 import com.teamabnormals.blueprint.core.util.DataUtil;
 import com.teamaurora.enhanced_mushrooms.core.registry.EMBlocks;
+import com.teamaurora.enhanced_mushrooms.core.registry.EMItems;
 
 public class EMCompat {
 
     public static void registerCompat() {
         registerFlammables();
+        EMItems.setupTabEditors();
+        EMBlocks.setupTabEditors();
     }
 
     private static void registerFlammables() {

@@ -4,9 +4,7 @@ import com.teamabnormals.blueprint.core.data.server.tags.BlueprintItemTagsProvid
 import com.teamabnormals.blueprint.core.other.tags.BlueprintItemTags;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamaurora.enhanced_mushrooms.core.EnhancedMushrooms;
-import com.teamaurora.enhanced_mushrooms.core.other.tags.EMBlockTags;
 import com.teamaurora.enhanced_mushrooms.core.other.tags.EMItemTags;
-import com.teamaurora.enhanced_mushrooms.core.registry.EMBlocks;
 import com.teamaurora.enhanced_mushrooms.core.registry.EMItems;
 import com.teamaurora.enhanced_mushrooms.integration.farmers_delight.EMFDCompat;
 import net.minecraft.core.HolderLookup;
@@ -14,7 +12,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
