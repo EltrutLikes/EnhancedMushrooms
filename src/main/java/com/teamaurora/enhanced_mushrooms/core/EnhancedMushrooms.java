@@ -9,13 +9,9 @@ import com.teamaurora.enhanced_mushrooms.core.data.server.tags.EMBlockTagsProvid
 import com.teamaurora.enhanced_mushrooms.core.data.server.tags.EMItemTagsProvider;
 import com.teamaurora.enhanced_mushrooms.core.other.EMClientCompat;
 import com.teamaurora.enhanced_mushrooms.core.other.EMCompat;
-import com.teamaurora.enhanced_mushrooms.core.registry.EMBlocks;
-import com.teamaurora.enhanced_mushrooms.core.registry.EMItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.*;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -24,15 +20,12 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.common.util.MutableHashedLinkedMap;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(EnhancedMushrooms.MOD_ID)

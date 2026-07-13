@@ -6,7 +6,6 @@ import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 
 import java.util.function.Supplier;
 
@@ -31,7 +30,7 @@ public class MushroomStemBlock extends LogBlock {
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{AXIS, UP, DOWN, NORTH, EAST, SOUTH, WEST});
+        builder.add(AXIS, UP, DOWN, NORTH, EAST, SOUTH, WEST);
     }
 
     static {

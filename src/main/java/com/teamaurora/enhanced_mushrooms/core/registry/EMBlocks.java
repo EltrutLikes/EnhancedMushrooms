@@ -21,6 +21,7 @@ import com.teamaurora.enhanced_mushrooms.common.block.MushroomStemReplacerBlock;
 import com.teamaurora.enhanced_mushrooms.core.EnhancedMushrooms;
 import com.teamaurora.enhanced_mushrooms.core.other.EMConstants;
 import com.teamaurora.enhanced_mushrooms.integration.farmers_delight.EMFDCompat;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -108,11 +109,11 @@ public class EMBlocks {
     }
 
     public static Predicate<ItemStack> ofID(ResourceLocation location, ItemLike fallback, String... modids) {
-        return stack -> (BlockSubRegistryHelper.areModsLoaded(modids) ? of(ForgeRegistries.ITEMS.getValue(location)) : of(fallback)).test(stack);
+        return stack -> (BlockSubRegistryHelper.areModsLoaded(modids) ? of(BuiltInRegistries.ITEM.get(location)) : of(fallback)).test(stack);
     }
 
     public static Predicate<ItemStack> ofID(ResourceLocation location, String... modids) {
-        return stack -> (BlockSubRegistryHelper.areModsLoaded(modids) && of(ForgeRegistries.ITEMS.getValue(location)).test(stack));
+        return stack -> (BlockSubRegistryHelper.areModsLoaded(modids) && of(BuiltInRegistries.ITEM.get(location)).test(stack));
     }
 
     public static class EMProperties {

@@ -1,31 +1,33 @@
-issueTrackerURL = "https://github.com/TeamAuroraMods/${mod_repo}/issues"
-license = "${mod_license}"
+modLoader="javafml"
+loaderVersion="[1,)"
+issueTrackerURL = "https://github.com/TeamAuroraMods/EnhancedMushrooms/issues"
+license = "All Rights Reserved"
 
 [[mods]]
-modId = "${mod_id}"
-version = "${mod_version}"
-displayName = "${mod_name}"
+modId = "enhanced_mushrooms"
+version = "6.0.0"
+displayName = "Enhanced Mushrooms"
 authors = "Team Aurora"
-description = "${mod_description}"
+description = "$It enhances the mushrooms"
 logoFile="logo.png"
 
-[[dependencies.${mod_id}]]
+[[dependencies.enhanced_mushrooms]]
 modId = "neoforge"
 mandatory = true
 versionRange = "[2,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.enhanced_mushrooms]]
 modId = "minecraft"
 mandatory = true
-versionRange = "${minecraft_version_range}"
+versionRange = "[1.21.1]"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.enhanced_mushrooms]]
 modId = "blueprint"
 mandatory = true
-versionRange = "${blueprint_version_range}"
+versionRange = "[8.1.0,]"
 ordering = "BEFORE"
 side = "BOTH"
