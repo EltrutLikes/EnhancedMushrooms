@@ -47,11 +47,12 @@ public class EMBlocks {
     public static final BlockSubRegistryHelper HELPER = EnhancedMushrooms.REGISTRY_HELPER.getBlockSubHelper();
     public static final BlockSubRegistryHelper VANILLA_HELPER = EnhancedMushrooms.VANILLA_HELPER.getBlockSubHelper();
 
-    public static final DeferredBlock<Block> MUSHROOM_STEM_REPLACER = VANILLA_HELPER.createBlockNoItem("mushroom_stem", ()->new MushroomStemReplacerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUSHROOM_STEM)));
+    // this line causes a null-pointer exception
+//    public static final DeferredBlock<Block> MUSHROOM_STEM_REPLACER = VANILLA_HELPER.createBlockNoItem("mushroom_stem", ()->new MushroomStemReplacerBlock(Block.Properties.ofFullCopy(Blocks.MUSHROOM_STEM)));
 
     public static final DeferredBlock<Block> STRIPPED_MUSHROOM_STEM = HELPER.createBlock("stripped_mushroom_stem", ()->new RotatedPillarBlock(EMProperties.MUSHROOM.log()));
     public static final DeferredBlock<Block> STRIPPED_MUSHROOM_HYPHAE = HELPER.createBlock("stripped_mushroom_hyphae", ()->new RotatedPillarBlock(EMProperties.MUSHROOM.log()));
-    public static final DeferredBlock<Block> MUSHROOM_STEM = HELPER.createBlockNoItem("mushroom_stem", ()->new MushroomStemBlock(STRIPPED_MUSHROOM_STEM, EMProperties.MUSHROOM.log()));
+    public static final DeferredBlock<Block> MUSHROOM_STEM = HELPER.createBlock("mushroom_stem", ()->new MushroomStemBlock(STRIPPED_MUSHROOM_STEM, EMProperties.MUSHROOM.log()));
     public static final DeferredBlock<Block> MUSHROOM_HYPHAE = HELPER.createBlock("mushroom_hyphae", ()->new LogBlock(STRIPPED_MUSHROOM_HYPHAE, EMProperties.MUSHROOM.log()));
     public static final DeferredBlock<Block> MUSHROOM_PLANKS = HELPER.createBlock("mushroom_planks", ()->new Block(EMProperties.MUSHROOM.planks()));
     public static final DeferredBlock<Block> MUSHROOM_STAIRS = HELPER.createBlock("mushroom_stairs", ()->new StairBlock(MUSHROOM_PLANKS.get().defaultBlockState(), EMProperties.MUSHROOM.planks()));
