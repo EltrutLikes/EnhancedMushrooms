@@ -27,7 +27,7 @@ public class EMItems {
     public static final ItemSubRegistryHelper HELPER = EnhancedMushrooms.REGISTRY_HELPER.getItemSubHelper();
     public static final ItemSubRegistryHelper VANILLA_HELPER = EnhancedMushrooms.VANILLA_HELPER.getItemSubHelper();
 
-    public static final DeferredItem<Item> MUSHROOM_STEM = VANILLA_HELPER.createItem("mushroom_stem", () -> new BlockItem(EMBlocks.MUSHROOM_STEM.get(), new Item.Properties()));
+//    public static final DeferredItem<Item> MUSHROOM_STEM = VANILLA_HELPER.createItem("mushroom_stem", () -> new BlockItem(EMBlocks.MUSHROOM_STEM.get(), new Item.Properties()));
 
     public static final Pair<DeferredItem<BlueprintBoatItem>, DeferredItem<BlueprintBoatItem>> MUSHROOM_BOAT = HELPER.createBoatAndChestBoatItem("mushroom", EMBlocks.MUSHROOM_PLANKS);
     public static final DeferredItem<Item> MUSHROOM_FURNACE_BOAT = HELPER.createItem("mushroom_furnace_boat", ItemSubRegistryHelper.areModsLoaded("boatload") ? EMBoatTypes.MUSHROOM_FURNACE_BOAT : () -> new Item(new Item.Properties()));

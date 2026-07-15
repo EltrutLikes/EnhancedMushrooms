@@ -59,7 +59,6 @@ public class EMBlocks {
     public static final DeferredBlock<Block> MUSHROOM_SLAB = HELPER.createBlock("mushroom_slab", ()->new SlabBlock(EMProperties.MUSHROOM.planks()));
     public static final DeferredBlock<Block> MUSHROOM_PRESSURE_PLATE = HELPER.createBlock("mushroom_pressure_plate", ()->new PressurePlateBlock(EMProperties.MUSHROOM_BLOCK_SET, EMProperties.MUSHROOM.pressurePlate()));
     public static final DeferredBlock<Block> MUSHROOM_BUTTON = HELPER.createBlock("mushroom_button", ()->new ButtonBlock(EMProperties.MUSHROOM_BLOCK_SET, 30, EMProperties.MUSHROOM.button()));
-    // TODO: register fences as fuel
     public static final DeferredBlock<Block> MUSHROOM_FENCE = HELPER.createBlock("mushroom_fence", ()->new FenceBlock(EMProperties.MUSHROOM.planks()));
     public static final DeferredBlock<Block> MUSHROOM_FENCE_GATE = HELPER.createBlock("mushroom_fence_gate", ()->new FenceGateBlock(EMProperties.MUSHROOM_WOOD_TYPE, EMProperties.MUSHROOM.planks()));
     public static final DeferredBlock<Block> MUSHROOM_DOOR = HELPER.createBlock("mushroom_door", ()->new DoorBlock(EMProperties.MUSHROOM_BLOCK_SET, EMProperties.MUSHROOM.door()));
@@ -67,7 +66,6 @@ public class EMBlocks {
     public static final Pair<DeferredBlock<BlueprintStandingSignBlock>, DeferredBlock<BlueprintWallSignBlock>> MUSHROOM_SIGNS = HELPER.createSignBlock("mushroom", EMProperties.MUSHROOM_WOOD_TYPE, EMProperties.MUSHROOM.sign());
     public static final Pair<DeferredBlock<BlueprintCeilingHangingSignBlock>, DeferredBlock<BlueprintWallHangingSignBlock>> MUSHROOM_HANGING_SIGNS = HELPER.createHangingSignBlock("mushroom", EMProperties.MUSHROOM_WOOD_TYPE, EMProperties.MUSHROOM.hangingSign());
 
-    // TODO: register boards, bookshelves and ladder as fuel
     public static final DeferredBlock<Block> MUSHROOM_BOARDS = HELPER.createBlock("mushroom_boards", () -> new RotatedPillarBlock(EMProperties.MUSHROOM.planks()));
     public static final DeferredBlock<Block> MUSHROOM_BOOKSHELF = HELPER.createBlock("mushroom_bookshelf", ()->new Block(EMProperties.MUSHROOM.bookshelf()));
     public static final DeferredBlock<Block> CHISELED_MUSHROOM_BOOKSHELF = HELPER.createBlock("chiseled_mushroom_bookshelf", ()->new ChiseledBookShelfBlock(EMProperties.MUSHROOM.chiseledBookshelf()));
@@ -75,7 +73,6 @@ public class EMBlocks {
     public static final DeferredBlock<Block> MUSHROOM_BEEHIVE = HELPER.createBlock("mushroom_beehive", ()->new BlueprintBeehiveBlock(EMProperties.MUSHROOM.beehive()));
     public static final DeferredBlock<BlueprintChestBlock> MUSHROOM_CHEST = HELPER.createChestBlock("mushroom", EMProperties.MUSHROOM.chest());
     public static final DeferredBlock<BlueprintTrappedChestBlock> TRAPPED_MUSHROOM_CHEST = HELPER.createTrappedChestBlock("mushroom", EMProperties.MUSHROOM.chest());
-    // TODO: register cabinet as fuel
     public static final DeferredBlock<Block> MUSHROOM_CABINET = HELPER.createBlock("mushroom_cabinet", ItemSubRegistryHelper.areModsLoaded("farmersdelight") ? EMFDCompat.CABINET_SUPPLIER : () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL)));
 
     public static void setupTabEditors() {

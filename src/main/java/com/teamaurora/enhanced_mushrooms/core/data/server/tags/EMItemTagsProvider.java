@@ -5,6 +5,7 @@ import com.teamabnormals.blueprint.core.other.tags.BlueprintItemTags;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamaurora.enhanced_mushrooms.core.EnhancedMushrooms;
 import com.teamaurora.enhanced_mushrooms.core.other.tags.EMItemTags;
+import com.teamaurora.enhanced_mushrooms.core.registry.EMBlocks;
 import com.teamaurora.enhanced_mushrooms.core.registry.EMItems;
 import com.teamaurora.enhanced_mushrooms.integration.farmers_delight.EMFDCompat;
 import net.minecraft.core.HolderLookup;
@@ -48,6 +49,6 @@ public class EMItemTagsProvider extends BlueprintItemTagsProvider {
         this.tag(BlueprintItemTags.FURNACE_BOATS).add(EMItems.MUSHROOM_FURNACE_BOAT.get());
         this.tag(BlueprintItemTags.LARGE_BOATS).add(EMItems.LARGE_MUSHROOM_BOAT.get());
 
-        this.tag(EMItemTags.MUSHROOM_STEMS).add(EMItems.MUSHROOM_STEM.get(), STRIPPED_MUSHROOM_STEM.get().asItem(), MUSHROOM_HYPHAE.get().asItem(), STRIPPED_MUSHROOM_HYPHAE.get().asItem());
+        this.tag(EMItemTags.MUSHROOM_STEMS).add(MUSHROOM_STEM.asItem(), STRIPPED_MUSHROOM_STEM.get().asItem(), MUSHROOM_HYPHAE.get().asItem(), STRIPPED_MUSHROOM_HYPHAE.get().asItem());
     }
 }
