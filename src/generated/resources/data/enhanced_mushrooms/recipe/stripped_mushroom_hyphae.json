@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bark",
+  "key": {
+    "#": {
+      "item": "enhanced_mushrooms:stripped_mushroom_stem"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "enhanced_mushrooms:stripped_mushroom_hyphae"
+  }
+}

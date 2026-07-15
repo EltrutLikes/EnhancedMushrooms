@@ -12,7 +12,7 @@ import net.minecraft.world.item.Item;
 import java.util.function.Supplier;
 
 public class EMBoatTypes {
-    public static final BoatloadBoatType MUSHROOM = BoatloadBoatType.register(BoatloadBoatType.create(ResourceLocation.fromNamespaceAndPath(EnhancedMushrooms.MOD_ID, "mushroom"), () -> EMBlocks.MUSHROOM_PLANKS.get().asItem(), () -> EMItems.MUSHROOM_BOAT.getFirst().get(), () -> EMItems.MUSHROOM_BOAT.getSecond().get(), EMItems.MUSHROOM_FURNACE_BOAT, EMItems.LARGE_MUSHROOM_BOAT));
+    public static final BoatloadBoatType MUSHROOM = BoatloadBoatType.register(BoatloadBoatType.create(ResourceLocation.fromNamespaceAndPath(EnhancedMushrooms.MOD_ID, "mushroom"), () -> EMBlocks.MUSHROOM_PLANKS.get().asItem(), () -> EMItems.MUSHROOM_BOAT.getFirst().get(), () -> EMItems.MUSHROOM_BOAT.getSecond().get(), () -> EMItems.MUSHROOM_FURNACE_BOAT.get(), () -> EMItems.LARGE_MUSHROOM_BOAT.get()));
 
     public static final Supplier<Item> MUSHROOM_FURNACE_BOAT = () -> new FurnaceBoatItem(MUSHROOM);
     public static final Supplier<Item> LARGE_MUSHROOM_BOAT = () -> new LargeBoatItem(MUSHROOM);
