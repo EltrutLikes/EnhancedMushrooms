@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:mushroom_stem"
+            "items": "enhanced_mushrooms:mushroom_stem"
           }
         ]
       },

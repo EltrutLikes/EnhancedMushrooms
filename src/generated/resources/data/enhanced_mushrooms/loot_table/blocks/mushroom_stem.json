@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:mushroom_stem"
+          "name": "enhanced_mushrooms:mushroom_stem"
         }
       ],
       "rolls": 1.0
