@@ -5,19 +5,30 @@
       "item": "enhanced_mushrooms:mushroom_stem"
     }
   ],
-  "tool": {
-    "type": "farmersdelight:tool_action",
-    "action": "axe_strip"
-  },
-  "result": [
+  "tool": [
     {
-      "id": "enhanced_mushrooms:stripped_mushroom_stem"
+      "type": "farmersdelight:item_ability",
+      "action": "axe_strip"
     },
     {
-      "id": "farmersdelight:tree_bark"
+      "tag": "minecraft:axes"
     }
   ],
-  "sound": "minecraft:item.axe.strip",
+  "result": [
+    {
+      "item": {
+        "id": "enhanced_mushrooms:stripped_mushroom_stem"
+      }
+    },
+    {
+      "item": {
+        "id": "farmersdelight:tree_bark"
+      }
+    }
+  ],
+  "sound": {
+    "sound_id": "minecraft:item.axe.strip"
+  },
   "conditions": [
     {
       "type": "neoforge:mod_loaded",

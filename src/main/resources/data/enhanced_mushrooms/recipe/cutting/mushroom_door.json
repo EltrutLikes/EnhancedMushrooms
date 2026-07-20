@@ -5,13 +5,20 @@
       "item": "enhanced_mushrooms:mushroom_door"
     }
   ],
-  "tool": {
-    "type": "farmersdelight:tool_action",
-    "action": "axe_dig"
-  },
+  "tool": [
+    {
+      "type": "farmersdelight:item_ability",
+      "action": "axe_dig"
+    },
+    {
+      "tag": "minecraft:axes"
+    }
+  ],
   "result": [
     {
-      "id": "enhanced_mushrooms:mushroom_planks"
+      "item": {
+        "id": "enhanced_mushrooms:mushroom_planks"
+      }
     }
   ],
   "conditions": [
