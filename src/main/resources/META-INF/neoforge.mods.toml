@@ -8,7 +8,7 @@ modId = "enhanced_mushrooms"
 version = "6.0.0"
 displayName = "Enhanced Mushrooms"
 authors = "Team Aurora"
-description = "$It enhances the mushrooms"
+description = "Replaces Vanilla's overworld mushroom stems with a new woodset!"
 logoFile="logo.png"
 
 [[dependencies.enhanced_mushrooms]]
