@@ -5,7 +5,6 @@ import com.teamabnormals.blueprint.core.other.tags.BlueprintItemTags;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamaurora.enhanced_mushrooms.core.EnhancedMushrooms;
 import com.teamaurora.enhanced_mushrooms.core.other.tags.EMItemTags;
-import com.teamaurora.enhanced_mushrooms.core.registry.EMBlocks;
 import com.teamaurora.enhanced_mushrooms.core.registry.EMItems;
 import com.teamaurora.enhanced_mushrooms.integration.farmers_delight.EMFDCompat;
 import net.minecraft.core.HolderLookup;
@@ -42,7 +41,7 @@ public class EMItemTagsProvider extends BlueprintItemTagsProvider {
         this.copyWoodworksTags();
 
         if (ItemSubRegistryHelper.areModsLoaded("farmersdelight"))
-            this.tag(EMFDCompat.cabinetTagSupplier.get()).add(MUSHROOM_CABINET.get().asItem());
+            this.tag(EMFDCompat.cabinetItemTagSupplier.get()).add(MUSHROOM_CABINET.get().asItem());
 
         this.tag(ItemTags.BOATS).add(EMItems.MUSHROOM_BOAT.getFirst().get());
         this.tag(ItemTags.CHEST_BOATS).add(EMItems.MUSHROOM_BOAT.getSecond().get());

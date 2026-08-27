@@ -1,5 +1,6 @@
 package com.teamaurora.enhanced_mushrooms.core;
 
+import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamaurora.enhanced_mushrooms.core.data.client.EMBlockStateProvider;
 import com.teamaurora.enhanced_mushrooms.core.data.client.EMItemModelProvider;
@@ -9,6 +10,7 @@ import com.teamaurora.enhanced_mushrooms.core.data.server.tags.EMBlockTagsProvid
 import com.teamaurora.enhanced_mushrooms.core.data.server.tags.EMItemTagsProvider;
 import com.teamaurora.enhanced_mushrooms.core.other.EMClientCompat;
 import com.teamaurora.enhanced_mushrooms.core.other.EMCompat;
+import com.teamaurora.enhanced_mushrooms.integration.farmers_delight.EMFDCompat;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -21,6 +23,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,7 +47,8 @@ public class EnhancedMushrooms
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
         bus.addListener(this::dataSetup);
-        bus.addListener(EventPriority.LOWEST, this::buildCreativeModeTabContents);
+
+        bus.addListener(this::setupCabinetBlockEntity);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -73,20 +77,13 @@ public class EnhancedMushrooms
         generator.addProvider(includeClient, new EMItemModelProvider(output, helper));
     }
 
-    @SubscribeEvent
-    public void buildCreativeModeTabContents(@NotNull BuildCreativeModeTabContentsEvent event)
-    {
-//        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-//            MutableHashedLinkedMap<ItemStack, CreativeModeTab.TabVisibility> entries = event.getEntries();
-//            ArrayList<ItemStack> mushroom_stems = new ArrayList<>();
-//            for (Map.Entry<ItemStack, CreativeModeTab.TabVisibility> entry : entries)
-//            {
-//                if (entry.getKey().is(Items.MUSHROOM_STEM)) {
-//                    //mushroom_stems.add(entry.getKey());
-//                    LOGGER.info(entry.getKey());
-//                }
-//            }
-//            mushroom_stems.forEach(entries::remove);
-//        }
+    private void setupCabinetBlockEntity(BlockEntityTypeAddBlocksEvent event) {
+        if (ItemSubRegistryHelper.areModsLoaded("farmersdelight")) {
+            try {
+                EMFDCompat.addToCabinetBlockEntity(event);
+            } catch (Exception e) {
+                LOGGER.error("Failed to add cabinet block entity", e);
+            }
+        }
     }
 }

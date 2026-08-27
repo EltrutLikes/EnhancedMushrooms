@@ -1,8 +1,10 @@
 package com.teamaurora.enhanced_mushrooms.core.data.server.tags;
 
 import com.teamabnormals.blueprint.core.other.tags.BlueprintBlockTags;
+import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamaurora.enhanced_mushrooms.core.EnhancedMushrooms;
 import com.teamaurora.enhanced_mushrooms.core.other.tags.EMBlockTags;
+import com.teamaurora.enhanced_mushrooms.integration.farmers_delight.EMFDCompat;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -40,6 +42,9 @@ public class EMBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(MUSHROOM_STEM.get());
 
         this.tag(EMBlockTags.MUSHROOM_STEMS).add(MUSHROOM_STEM.get(), STRIPPED_MUSHROOM_STEM.get(), MUSHROOM_HYPHAE.get(), STRIPPED_MUSHROOM_HYPHAE.get());
+
+        if (ItemSubRegistryHelper.areModsLoaded("farmersdelight"))
+            this.tag(EMFDCompat.cabinetBlockTagSupplier.get()).add(MUSHROOM_CABINET.get());
 
         this.tag(BlueprintBlockTags.WOODEN_BOARDS).add(MUSHROOM_BOARDS.get());
         this.tag(BlueprintBlockTags.WOODEN_CHESTS).add(MUSHROOM_CHEST.get());
