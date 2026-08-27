@@ -2,6 +2,7 @@ package com.teamaurora.enhanced_mushrooms.core.registry;
 
 import com.mojang.datafixers.util.Pair;
 import com.teamabnormals.blueprint.common.block.BlueprintBeehiveBlock;
+import com.teamabnormals.blueprint.common.block.BlueprintChiseledBookShelfBlock;
 import com.teamabnormals.blueprint.common.block.LogBlock;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintChestBlock;
 import com.teamabnormals.blueprint.common.block.chest.BlueprintTrappedChestBlock;
@@ -47,7 +48,7 @@ public class EMBlocks {
     public static final BlockSubRegistryHelper HELPER = EnhancedMushrooms.REGISTRY_HELPER.getBlockSubHelper();
     public static final BlockSubRegistryHelper VANILLA_HELPER = EnhancedMushrooms.VANILLA_HELPER.getBlockSubHelper();
 
-    // this line causes a null-pointer exception
+    // neoforge does not support registry replacement
 //    public static final DeferredBlock<Block> MUSHROOM_STEM_REPLACER = VANILLA_HELPER.createBlockNoItem("mushroom_stem", ()->new MushroomStemReplacerBlock(Block.Properties.ofFullCopy(Blocks.MUSHROOM_STEM)));
 
     public static final DeferredBlock<Block> STRIPPED_MUSHROOM_STEM = HELPER.createBlock("stripped_mushroom_stem", ()->new RotatedPillarBlock(EMProperties.MUSHROOM.log()));
@@ -68,7 +69,7 @@ public class EMBlocks {
 
     public static final DeferredBlock<Block> MUSHROOM_BOARDS = HELPER.createBlock("mushroom_boards", () -> new RotatedPillarBlock(EMProperties.MUSHROOM.planks()));
     public static final DeferredBlock<Block> MUSHROOM_BOOKSHELF = HELPER.createBlock("mushroom_bookshelf", ()->new Block(EMProperties.MUSHROOM.bookshelf()));
-    public static final DeferredBlock<Block> CHISELED_MUSHROOM_BOOKSHELF = HELPER.createBlock("chiseled_mushroom_bookshelf", ()->new ChiseledBookShelfBlock(EMProperties.MUSHROOM.chiseledBookshelf()));
+    public static final DeferredBlock<Block> CHISELED_MUSHROOM_BOOKSHELF = HELPER.createBlock("chiseled_mushroom_bookshelf", ()->new BlueprintChiseledBookShelfBlock(EMProperties.MUSHROOM.chiseledBookshelf()));
     public static final DeferredBlock<Block> MUSHROOM_LADDER = HELPER.createBlock("mushroom_ladder", ()->new LadderBlock(EMProperties.MUSHROOM.ladder()));
     public static final DeferredBlock<Block> MUSHROOM_BEEHIVE = HELPER.createBlock("mushroom_beehive", ()->new BlueprintBeehiveBlock(EMProperties.MUSHROOM.beehive()));
     public static final DeferredBlock<BlueprintChestBlock> MUSHROOM_CHEST = HELPER.createChestBlock("mushroom", EMProperties.MUSHROOM.chest());
