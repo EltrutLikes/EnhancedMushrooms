@@ -19,15 +19,7 @@
     "stem_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "enhanced_mushrooms:mushroom_stem",
-        "Properties": {
-          "down": "false",
-          "east": "true",
-          "north": "true",
-          "south": "true",
-          "up": "false",
-          "west": "true"
-        }
+        "Name": "enhanced_mushrooms:mushroom_stem"
       }
     }
   }
